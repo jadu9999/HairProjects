@@ -4,19 +4,175 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class Login extends JFrame {
 
 	public static void main(String[] args) {
-		 Login();
+		//Login();
+		String [] days = new String [31];
+		userhome(new HairMemberVo(), days);
 		
 
 	}
+	
+	//로그인 성공하면 나오는user프레임-----------------------------------------
+	
+	public static void userhome(HairMemberVo member , String [] days) {
+		JFrame jf = new JFrame();
+		jf = new JFrame();
+		jf.setLocation(700, 400);
+		jf.setSize(680, 500);
+		jf.setTitle("예약하기");
+		jf.setLayout(null);
+		
+		JLabel jl13 = new JLabel("닉네임 : " + member.getName() + " Rank: " + member.getRank());
+		jl13.setSize(400, 30);
+		jl13.setLocation(120, 15);
+		jl13.setHorizontalAlignment(JLabel.CENTER);
+		
+		jf.add(jl13);
+		
+		String [] content = {"cut","perm","color"};
+		JComboBox cb = new JComboBox(content);
+		cb.setLocation(490,100);
+		cb.setSize(120,25);
+		
+		jf.add(cb);
+		
+		String [] year = {"2023"};
+		JComboBox cb2 = new JComboBox(year);
+		cb2.setLocation(40,100);
+		cb2.setSize(120,25);
+		
+		jf.add(cb2);
+		
+		String [] month = {"1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"};
+		JComboBox cb3 = new JComboBox(month);
+		cb3.setLocation(190,100);
+		cb3.setSize(120,25);
+		
+		jf.add(cb3);
+		
+		String [] day = {"1일"};
+		
+		
+		cb3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> cb=(JComboBox<String>)e.getSource();
+				String days =cb.getSelectedItem().toString();
+				
+				System.out.println(days);
+				
+				switch (days) {
+				case "2월": day[28]=null;day[29]=null; day[30] =null;
+				
+							break;
+				}
+				
+			}
+		});
+		
+		
+		
+		
+		JComboBox cb4 = new JComboBox(day);
+		cb4.setLocation(340,100);
+		cb4.setSize(120,25);
+		
+		jf.add(cb4);
+		jf.setVisible(false);
+		
+		
+	
+		JButton bt18 = new JButton("09:00");
+		bt18.setSize(120, 50);
+		bt18.setLocation(40, 200);
 
+		jf.add(bt18);
+
+		JButton bt7 = new JButton("10:00");
+		bt7.setSize(120, 50);
+		bt7.setLocation(190, 200);
+
+		jf.add(bt7);
+		
+		JButton bt8 = new JButton("11:00");
+		bt8.setSize(120, 50);
+		bt8.setLocation(340, 200);
+
+		jf.add(bt8);
+		
+		JButton bt9 = new JButton("12:00");
+		bt9.setSize(120, 50);
+		bt9.setLocation(490, 200);
+
+		jf.add(bt9);
+		
+		JButton bt10 = new JButton("13:00");
+		bt10.setSize(120, 50);
+		bt10.setLocation(40, 270);
+
+		jf.add(bt10);
+		
+		JButton bt11 = new JButton("14:00");
+		bt11.setSize(120, 50);
+		bt11.setLocation(190, 270);
+
+		jf.add(bt11);
+		
+		JButton bt12 = new JButton("15:00");
+		bt12.setSize(120, 50);
+		bt12.setLocation(340, 270);
+
+		jf.add(bt12);
+		
+		JButton bt13 = new JButton("16:00");
+		bt13.setSize(120, 50);
+		bt13.setLocation(490, 270);
+
+		jf.add(bt13);
+		
+		JButton bt14 = new JButton("17:00");
+		bt14.setSize(120, 50);
+		bt14.setLocation(40, 340);
+
+		jf.add(bt14);
+		
+		JButton bt15 = new JButton("18:00");
+		bt15.setSize(120, 50);
+		bt15.setLocation(190, 340);
+
+		jf.add(bt15);
+		
+		JButton bt16 = new JButton("19:00");
+		bt16.setSize(120, 50);
+		bt16.setLocation(340, 340);
+
+		jf.add(bt16);
+		
+		JButton bt17 = new JButton("20:00");
+		bt17.setSize(120, 50);
+		bt17.setLocation(490, 340);
+
+		jf.add(bt17);
+
+		
+
+		
+		
+		
+		
+		jf.setVisible(true);
+	}
+	
+	
+	
 	// 비밀번호찾기창프레임----------------------------------------------
 	public static void Findpwd() {
 		JFrame jf = new JFrame();
@@ -203,7 +359,7 @@ public class Login extends JFrame {
 		jf.add(bt4);
 
 		jf.setVisible(true);
-		//---------------------------------------------
+		//-------------------회원가입버튼눌렀을때 db--------------------------
 		bt4.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -289,6 +445,42 @@ public class Login extends JFrame {
 		bt3.setLocation(340, 140);
 
 		jf.add(bt3);
+		
+		bt.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				HairMemberVo member = new HairMemberVo();
+				String msg = "";
+				//member에는 아무것도일단 안들어있어
+				member.setId(jt8.getText());
+				member.setPwd(jt9.getText());
+				//member에 입력한값이 들어가있음
+				HairDao dao = new HairDao();
+				member = dao.loginCheck(member);
+				
+				System.out.println(member);
+				
+				if(member.getId() == null) {
+					msg = "아이디/비밀번호를 확인해주세요";
+					JOptionPane.showMessageDialog(null, msg);
+				}
+				
+				else if(member.getId() != null){
+					msg = "로그인이 성공했습니다.";
+					JOptionPane.showMessageDialog(null, msg);
+					
+					if(member.getPositions().equals("Master")) {
+						
+					}
+					else {
+						//userhome(member);
+					}
+				}
+				
+				
+			}
+		});
 
 		// 회원가입 버튼 누르면 ---------------------------------
 		bt3.addActionListener(new ActionListener() {
@@ -321,4 +513,5 @@ public class Login extends JFrame {
 		
 		
 	}
+	
 }

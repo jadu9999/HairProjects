@@ -1,13 +1,15 @@
 package login;
 
 public class HairMemberVo {
+	
 	private String id;
 	private String pwd;
 	private String name;
 	private String phone;
 	private int point;
+	private String positions;
 	
-	private Ranks rank;
+	private String ranks;
 
 	public String getId() {
 		return id;
@@ -49,12 +51,29 @@ public class HairMemberVo {
 		this.point = point;
 	}
 
-	public Ranks getRank() {
-		return rank;
+	public String getRank() {
+		return ranks;
 	}
 
-	public void setRank(Ranks rank) {
-		this.rank = rank;
+	public void setRank(String rank) {
+		this.ranks = rank;
+	}
+	
+		
+	public String getPositions() {
+		return positions;
+	}
+
+	public void setPositions(String positions) {
+		this.positions = positions;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "HairMemberVo [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", point=" + point
+				+ ", rank=" + ranks + "]";
 	}
 
 	
