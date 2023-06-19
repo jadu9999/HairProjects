@@ -9,21 +9,45 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 public class Login extends JFrame {
 
 	public static void main(String[] args) {
-		//Login();
-		String [] days = new String [31];
-		userhome(new HairMemberVo(), days);
+		Login();
 		
+		//userhome(new HairMemberVo());
+		masterhome();
 
 	}
 	
+	public static void masterhome() {
+		
+		JFrame jf = new JFrame();
+		jf = new JFrame();
+		jf.setLocation(700, 400);
+		jf.setSize(680, 500);
+		jf.setTitle("예약현황");
+		jf.setLayout(null);
+		
+		
+		jf.setVisible(true);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//로그인 성공하면 나오는user프레임-----------------------------------------
 	
-	public static void userhome(HairMemberVo member , String [] days) {
+	public static void userhome(HairMemberVo member) {
 		JFrame jf = new JFrame();
 		jf = new JFrame();
 		jf.setLocation(700, 400);
@@ -59,13 +83,28 @@ public class Login extends JFrame {
 		
 		jf.add(cb3);
 		
-		String [] day = {"1일"};
+		
+		String [] day = {"1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일"
+						,"13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일",
+						"25일","26일","27일","28일","29일","30일","31일"};
+		JComboBox cb4 = new JComboBox(day);
+		cb4.setLocation(340,100);
+		cb4.setSize(120,25);
+		
+		jf.add(cb4);
+		
+		
+		
 		
 		
 		cb3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> cb=(JComboBox<String>)e.getSource();
 				String days =cb.getSelectedItem().toString();
+			
+				
+				
+				
 				
 				System.out.println(days);
 				
@@ -80,13 +119,7 @@ public class Login extends JFrame {
 		
 		
 		
-		
-		JComboBox cb4 = new JComboBox(day);
-		cb4.setLocation(340,100);
-		cb4.setSize(120,25);
-		
-		jf.add(cb4);
-		jf.setVisible(false);
+	
 		
 		
 	
@@ -178,7 +211,7 @@ public class Login extends JFrame {
 		JFrame jf = new JFrame();
 		jf = new JFrame();
 		jf.setLocation(700, 400);
-		jf.setSize(500, 300);
+		jf.setSize(500, 310);
 		jf.setTitle("비밀번호찾기");
 		jf.setLayout(null);
 
@@ -194,42 +227,88 @@ public class Login extends JFrame {
 		jt10.setLocation(140, 40);
 
 		jf.add(jt10);
+		
+		
+		JLabel jl13 = new JLabel("전화번호 : ");
+		jl13.setSize(400, 30);
+		jl13.setLocation(-140, 80);
+		jl13.setHorizontalAlignment(JLabel.CENTER);
+
+		jf.add(jl13);
+
+		JTextField jt13 = new JTextField();
+		jt13.setSize(270, 30);
+		jt13.setLocation(140, 80);
+
+		jf.add(jt13);
 
 		JLabel jl11 = new JLabel("비밀번호 재설정 : ");
 		jl11.setSize(400, 30);
-		jl11.setLocation(-130, 80);
+		jl11.setLocation(-130, 120);
 		jl11.setHorizontalAlignment(JLabel.CENTER);
 
 		jf.add(jl11);
 
 		JTextField jt11 = new JTextField();
 		jt11.setSize(270, 30);
-		jt11.setLocation(140, 80);
-
+		jt11.setLocation(140, 120);
+		
+		
 		jf.add(jt11);
 		
 		
 		JLabel jl12 = new JLabel("비밀번호 확인 : ");
 		jl12.setSize(400, 30);
-		jl12.setLocation(-130, 120);
+		jl12.setLocation(-130, 160);
 		jl12.setHorizontalAlignment(JLabel.CENTER);
 
 		jf.add(jl12);
 
 		JTextField jt12 = new JTextField();
 		jt12.setSize(270, 30);
-		jt12.setLocation(140, 120);
+		jt12.setLocation(140, 160);
 
 		jf.add(jt12);
 		
 		JButton bt6 = new JButton("확인");
 		bt6.setSize(110, 25);
-		bt6.setLocation(200, 180);
+		bt6.setLocation(200, 210);
 
 		jf.add(bt6);
 
 
 		jf.setVisible(true);
+		
+	//비밀번호찾기 눌렀을때 db--------------------------------------
+		bt6.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				HairDao hair = new HairDao();
+				HairMemberVo member = new HairMemberVo();
+				String msg = "";
+			
+				member.setId(jt10.getText());
+				member.setPhone(jt13.getText());
+				member.setPwd(jt11.getText());
+				
+				
+				int findchangepwd = hair.findchangepwd(member);
+				
+				if(findchangepwd == 1) {
+					msg = "비밀번호 변경이 완료되었습니다.";
+				}else if(findchangepwd == 0) {
+					msg = "아이디 또는 전화번호를 다시 확인해 주세요";
+				}
+				
+				JOptionPane.showMessageDialog(null, msg);
+				
+				
+			}
+		});
+		
+		
+		
+		
 	}
 
 	// 아이디찾기창프레임-------------------------------------------------
@@ -275,6 +354,36 @@ public class Login extends JFrame {
 		jf.add(bt5);
 
 		jf.setVisible(true);
+		
+		//아이디찾기 눌렀을때 db-----------------------------------------
+		bt5.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				HairDao hair = new HairDao();
+				HairMemberVo member = new HairMemberVo();
+				String msg = "";
+				
+				member.setName(jt.getText());
+				member.setPhone(jt2.getText());
+				
+				HairMemberVo findMember = hair.findid(member);
+				
+				if(findMember.getId().isEmpty()) {
+					msg = "다시 확인해주세요";
+				}				
+				else {
+					msg = "귀하의 아이디는 "+findMember.getId()+" 입니다";
+				}
+				JOptionPane.showMessageDialog(null, msg);
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
@@ -336,7 +445,7 @@ public class Login extends JFrame {
 		JTextField jt6 = new JTextField();
 		jt6.setSize(270, 30);
 		jt6.setLocation(120, 330);
-
+				
 		jf.add(jt6);
 
 		JLabel jl7 = new JLabel("전화번호 : ");
@@ -431,7 +540,15 @@ public class Login extends JFrame {
 		JButton bt1 = new JButton("아이디찾기");
 		bt1.setSize(110, 25);
 		bt1.setLocation(60, 140);
-
+		
+		
+		
+		
+		
+		
+		
+		
+//-----------------------------------------------------
 		jf.add(bt1);
 
 		JButton bt2 = new JButton("비밀번호찾기");
@@ -439,7 +556,7 @@ public class Login extends JFrame {
 		bt2.setLocation(200, 140);
 
 		jf.add(bt2);
-
+//------------------------------------------------------------------------
 		JButton bt3 = new JButton("회원가입");
 		bt3.setSize(110, 25);
 		bt3.setLocation(340, 140);
@@ -510,8 +627,16 @@ public class Login extends JFrame {
 			}
 		});
 		
-		
-		
+		//로그인버튼 user계정으로 누르면-----------------------------------------------------
+		bt.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				userhome(new HairMemberVo());
+
+			}
+		});
+	
 	}
 	
 }
