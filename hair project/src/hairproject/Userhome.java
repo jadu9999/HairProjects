@@ -42,35 +42,27 @@ public class Userhome {
 		JComboBox cb3 = new JComboBox(month);
 		cb3.setLocation(190, 100);
 		cb3.setSize(120, 25);
-
+		
+		Comoboboxevent box = new Comoboboxevent();
+		box.setJf(jf);
+		
+		
+		
 		jf.add(cb3);
 
-		String[] day = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일",
-				"16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "29일", "30일",
-				"31일" };
-		JComboBox cb4 = new JComboBox(day);
+		String[] days = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일",
+				"16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일","29일","30일","31일"};
+		JComboBox cb4 = new JComboBox(days);
 		cb4.setLocation(340, 100);
 		cb4.setSize(120, 25);
-
+		
+		
+		
+		box.setDay(cb4);
+		cb3.addItemListener(box);
 		jf.add(cb4);
 
-		cb3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox<String> cb = (JComboBox<String>) e.getSource();
-				String days = cb.getSelectedItem().toString();
-
-				System.out.println(days);
-				String b = days;
-
-				switch (b) {
-				case "2월":
-					day[28].equals(null);
-
-					break;
-				}
-			}
-		});
-
+		
 		JButton bt18 = new JButton("09:00");
 		bt18.setSize(120, 50);
 		bt18.setLocation(40, 200);
