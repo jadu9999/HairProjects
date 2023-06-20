@@ -1,4 +1,4 @@
-package login;
+package hairproject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

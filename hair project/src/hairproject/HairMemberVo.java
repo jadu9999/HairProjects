@@ -1,4 +1,4 @@
-package login;
+package hairproject;
 
 public class HairMemberVo {
 	
