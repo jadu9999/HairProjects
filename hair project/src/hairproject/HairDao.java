@@ -14,6 +14,16 @@ public class HairDao {
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
+	
+	//예약창------------------------------------------------
+	
+
+	
+	
+	
+	
+	
+	
 
 	// 회원가입하기--------------------------------------------
 	public int join(HairMemberVo member) {
@@ -150,3 +160,5 @@ public class HairDao {
 		}
 	}
 }
+
+	

@@ -9,12 +9,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Userhome {
 	JFrame jf;
 	JComboBox cb3, cb4;
 	JTextField jt8;
+	JOptionPane jo;
 
 	public Userhome(HairMemberVo member) {
 
@@ -98,7 +100,7 @@ public class Userhome {
 		cb4.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == 1) {
-					jt8.setText("예약시간은 :" + String.valueOf(cb2.getSelectedItem()) + " "
+					jt8.setText("예약날자는 :" + String.valueOf(cb2.getSelectedItem()) + " "
 							+ String.valueOf(cb3.getSelectedItem()) + " " + String.valueOf(cb4.getSelectedItem()) + " "
 							+ String.valueOf(cb.getSelectedItem()) + " 시술예약되었습니다.");
 					System.out.println("일 선택 됐습니다.");
@@ -111,7 +113,7 @@ public class Userhome {
 		cb.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == 1) {
-					jt8.setText("예약시간은 :" + String.valueOf(cb2.getSelectedItem()) + " "
+					jt8.setText("예약날자는 :" + String.valueOf(cb2.getSelectedItem()) + " "
 							+ String.valueOf(cb3.getSelectedItem()) + " " + String.valueOf(cb4.getSelectedItem()) + " "
 							+ String.valueOf(cb.getSelectedItem()) + " 시술예약되었습니다.");
 					System.out.println("시술목록 선택 됐습니다.");
@@ -130,72 +132,326 @@ public class Userhome {
 		bt18.setLocation(40, 200);
 
 		jf.add(bt18);
+		
+		
+		bt18.addActionListener(new ActionListener() {
 
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  9:00입니다.");
+				if(bt18.getText().equals("click"))
+					bt18.setText("메롱메롱");
+				
+			
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "09:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		
+		//----------------------------------------------
 		JButton bt7 = new JButton("10:00");
 		bt7.setSize(120, 50);
 		bt7.setLocation(190, 200);
 
 		jf.add(bt7);
+		
+		
+		bt7.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  10:00입니다.");
+				if(bt7.getText().equals("click"))
+					bt7.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "10:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		
+		//------------------------------------------------------
+		
+		
 
 		JButton bt8 = new JButton("11:00");
 		bt8.setSize(120, 50);
 		bt8.setLocation(340, 200);
 
 		jf.add(bt8);
+		
+		
+		bt8.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  11:00입니다.");
+				if(bt8.getText().equals("click"))
+					bt8.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "11:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//----------------------------------------------------------
+		
+		
+		
+		
 
 		JButton bt9 = new JButton("12:00");
 		bt9.setSize(120, 50);
 		bt9.setLocation(490, 200);
 
 		jf.add(bt9);
+	
+		
+		bt9.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  12:00입니다.");
+				if(bt9.getText().equals("click"))
+					bt9.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "12:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//-----------------------------------------------------------
+		
+		
+		
+		
 
 		JButton bt10 = new JButton("13:00");
 		bt10.setSize(120, 50);
 		bt10.setLocation(40, 270);
 
 		jf.add(bt10);
+		
+		
+		bt10.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  13:00입니다.");
+				if(bt10.getText().equals("click"))
+					bt10.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "13:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		
+		//---------------------------------------------------------------
+		
+		
+		
 
 		JButton bt11 = new JButton("14:00");
 		bt11.setSize(120, 50);
 		bt11.setLocation(190, 270);
 
 		jf.add(bt11);
+		
+		
+		
+		bt11.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  14:00입니다.");
+				if(bt11.getText().equals("click"))
+					bt11.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "14:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//----------------------------------------------------------
+		
+		
+		
+		
+		
+		
 
 		JButton bt12 = new JButton("15:00");
 		bt12.setSize(120, 50);
 		bt12.setLocation(340, 270);
 
 		jf.add(bt12);
+		
+		
+		
+		
+		bt12.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  9:00입니다.");
+				if(bt12.getText().equals("click"))
+					bt12.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "15:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//------------------------------------------------------------
+		
+		
+		
 
 		JButton bt13 = new JButton("16:00");
 		bt13.setSize(120, 50);
 		bt13.setLocation(490, 270);
 
 		jf.add(bt13);
+		
+		
+		
+		bt13.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  9:00입니다.");
+				if(bt13.getText().equals("click"))
+					bt13.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "16:00예약 완료되었습니다.");
+			}
+				
+			
+		});
+		//------------------------------------------------------------
+		
+		
+		
+		
+		
+		
+		
 
 		JButton bt14 = new JButton("17:00");
 		bt14.setSize(120, 50);
 		bt14.setLocation(40, 340);
 
+		
 		jf.add(bt14);
+		
+		
+		bt14.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  17:00입니다.");
+				if(bt14.getText().equals("click"))
+					bt14.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "17:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		
+		//---------------------------------------------------------------
+		
+		
+		
+		
 
 		JButton bt15 = new JButton("18:00");
 		bt15.setSize(120, 50);
 		bt15.setLocation(190, 340);
 
 		jf.add(bt15);
+		
+		
+		
+		
+		bt15.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  18:00입니다.");
+				if(bt15.getText().equals("click"))
+					bt15.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "18:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//-----------------------------------------------------------
 
 		JButton bt16 = new JButton("19:00");
 		bt16.setSize(120, 50);
 		bt16.setLocation(340, 340);
 
 		jf.add(bt16);
+		
+		
+		
+		bt16.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  19:00입니다.");
+				if(bt16.getText().equals("click"))
+					bt16.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "19:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//-------------------------------------------------------------
+		
+		
+		
+		
+		
 
 		JButton bt17 = new JButton("20:00");
 		bt17.setSize(120, 50);
 		bt17.setLocation(490, 340);
 
 		jf.add(bt17);
+		
+		bt17.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				jt8.setText("예약시간은  20:00입니다.");
+				if(bt17.getText().equals("click"))
+					bt17.setText("메롱메롱");
+				
+				jo.showMessageDialog(null,cb3.getSelectedItem().toString()+ cb4.getSelectedItem().toString() + cb.getSelectedItem().toString() + "20:00예약 완료되었습니다.");
+					
+			}
+				
+			
+		});
+		//---------------------------------------------------------------
+		
+		
 
 		jt8 = new JTextField();
 		jt8.setSize(450, 60);
