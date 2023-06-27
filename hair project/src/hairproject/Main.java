@@ -15,11 +15,11 @@ import javax.swing.JTextField;
 public class Main extends JFrame {
 
 	public static void main(String[] args) {
-		Login.Login();
+		 Login.Login();
 		
-
+		//HairMemberVo member = new HairMemberVo();
+		//Masterhome.masterhome(member);
+		
 	}
-	
-	
 
 }

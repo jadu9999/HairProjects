@@ -92,9 +92,9 @@ public class Login {
 						JOptionPane.showMessageDialog(null, msg);
 
 						if (member.getPositions().equals("Master")) {
-							Masterhome.masterhome();
+							Masterhome.masterhome(member);
 						} else if (member.getPositions().equals("User")) {
-							Userhome.userhome(member);
+							new Userhome(member);
 						}
 					}
 				}
