@@ -12,7 +12,7 @@ public class Masterhome {
 	
 	public static void masterhome(HairMemberVo member) {
 		//ArrayList<HairMemberVo> arrMember 
-		String title[] = {"이름","연락처"};
+		String title[] = {"이름","연락처","날짜","시간"};
 		String data[][];
 		
 		data = new String[1][2];
