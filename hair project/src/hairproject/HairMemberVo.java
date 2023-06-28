@@ -8,7 +8,53 @@ public class HairMemberVo {
 	private String phone;
 	private int point;
 	private String positions;
+	private String reservation;
+	private String content;
+	private String times;
+	private String dates;
 	
+	public String getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(String reservation) {
+		this.reservation = reservation;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getTimes() {
+		return times;
+	}
+
+	public void setTimes(String times) {
+		this.times = times;
+	}
+
+	public String getDates() {
+		return dates;
+	}
+
+	public void setDates(String dates) {
+		this.dates = dates;
+	}
+
+	public String getRanks() {
+		return ranks;
+	}
+
+	public void setRanks(String ranks) {
+		this.ranks = ranks;
+	}
+
+
+
 	private String ranks;
 
 	public String getId() {
@@ -68,13 +114,14 @@ public class HairMemberVo {
 		this.positions = positions;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "HairMemberVo [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", point=" + point
-				+ ", rank=" + ranks + "]";
+				+ ", positions=" + positions + ", reservation=" + reservation + ", content=" + content + ", times="
+				+ times + ", dates=" + dates + ", ranks=" + ranks + "]";
 	}
+
+	
 
 	
 	

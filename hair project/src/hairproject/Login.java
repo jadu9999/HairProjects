@@ -94,6 +94,7 @@ public class Login {
 						if (member.getPositions().equals("Master")) {
 							Masterhome.masterhome(member);
 						} else if (member.getPositions().equals("User")) {
+							System.out.println("여기까진살아있음");
 							new Userhome(member);
 						}
 					}

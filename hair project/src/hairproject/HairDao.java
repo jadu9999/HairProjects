@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class HairDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -17,7 +18,70 @@ public class HairDao {
 	
 	//예약창------------------------------------------------
 	
+	public ArrayList<HairMemberVo> checkReservation() {
+		ArrayList<HairMemberVo> arrMember = new ArrayList<HairMemberVo>();
+		try {
+			connDB();
+			
+			
+			
+			String query = "select * from HAIRMEMBER where reservation=?";
+			stmt = con.prepareStatement(query);
+			stmt.setString(1,"Y");
+			
+			rs = stmt.executeQuery();
+			
+		
+			while (rs.next()) {
+				HairMemberVo myMember = new HairMemberVo();
+				myMember.setId(rs.getString("id"));
+				myMember.setPwd(rs.getString("pwd"));
+				myMember.setName(rs.getString("name"));
+				myMember.setPhone(rs.getString("phone"));
+				myMember.setRank(rs.getString("ranks"));
+				myMember.setPoint(rs.getInt("point"));
+				myMember.setPositions(rs.getString("positions"));			
+				myMember.setReservation(rs.getString("reservation"));
+				myMember.setContent(rs.getString("content"));
+				myMember.setTimes(rs.getString("times"));
+				myMember.setDates(rs.getString("dates"));
+				
+				arrMember.add(myMember);
+			}
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return arrMember;
+	}
+	
+	public int UserRv(HairMemberVo member) {
+		int result = 0;
+		try {
+			connDB();
+			String query = "update HAIRMEMBER set reservation =?,content =?,times=?,dates=? where id=?";
+			stmt = con.prepareStatement(query);
+			
 
+			stmt.setString(1, member.getReservation());
+			stmt.setString(2, member.getContent());
+			stmt.setString(3, member.getTimes());
+			stmt.setString(4, member.getDates());
+			stmt.setString(5, member.getId());
+
+			result = stmt.executeUpdate(); // 셀렉문 결과값이 1나면 1을반환 int값으로 반환됨
+						
+			
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return result;
+	
+	}
 	
 	
 	
@@ -74,6 +138,10 @@ public class HairDao {
 				myMember.setRank(rs.getString("ranks"));
 				myMember.setPoint(rs.getInt("point"));
 				myMember.setPositions(rs.getString("positions"));
+				myMember.setReservation(rs.getString("reservation"));
+				myMember.setContent(rs.getString("content"));
+				myMember.setTimes(rs.getString("times"));
+				myMember.setDates(rs.getString("dates"));			
 			}
 
 		} catch (Exception e) {
