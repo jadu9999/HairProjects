@@ -28,8 +28,6 @@ public class Userhome {
 		HairDao dao = new HairDao();
 		ArrayList<HairMemberVo> arrMember = dao.checkReservation();//예약정보가 Y인 전체정보를 불러옴
 					//HairMemberVo 만 들어올수있다.
-		System.out.println(arrMember);
-//		Reservationinformation ri = new Reservationinformation();
 
 		jf = new JFrame();
 		jf.setLocation(700, 400);
@@ -580,19 +578,11 @@ public class Userhome {
 		String [] months = cb3.getSelectedItem().toString().split("월");
 		String [] day = cb4.getSelectedItem().toString().split("일");
 		
-		if(bt.length == 1) {
-			bt[0].setEnabled(false);
-			return;
-		}
-		
+	
 		for(int i = 0; i < arrMember.size(); i++) {
-			System.out.println("1번: " + arrMember.get(i).getDates());
-			System.out.println("2번: " + months[0] + "-"+day[0]);
-			System.out.println(arrMember.get(i).getId());
-			
-			
+						
 			if((arrMember.get(i).getDates()).equals("2023"+"-"+months[0]+"-"+day[0])) {
-				System.out.println("여기들어오나?");
+				
 				if(arrMember.get(i).getTimes().equals("09:00")) {
 					bt[0].setEnabled(false);
 				}

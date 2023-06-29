@@ -1,5 +1,7 @@
 package hairproject;
 
+import java.util.ArrayList;
+
 public class HairMemberVo {
 	
 	private String id;
@@ -80,7 +82,7 @@ public class HairMemberVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getPhone() {
 		return phone;
 	}
@@ -114,6 +116,14 @@ public class HairMemberVo {
 		this.positions = positions;
 	}
 
+	public void setUserCheck(String name,String phone, String content, String times, String dates) {
+		this.name = name;
+		this.phone = phone;
+		this.content=content;
+		this.times=times;
+		this.dates=dates;
+	}
+	
 	@Override
 	public String toString() {
 		return "HairMemberVo [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", point=" + point
