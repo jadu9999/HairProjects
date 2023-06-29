@@ -21,11 +21,11 @@ public class Masterhome {
 		JTable table = new JTable();
 		JScrollPane sp = new JScrollPane(table);
 		HairDao dao = new HairDao();
-		ArrayList<Personl> list = dao.Usercheck();
+		ArrayList<HairMemberVo> list = dao.Usercheck();
 		System.out.println(" 초코초코"+ list.get(0).getName());
 		System.out.println("리스트사이즈:"+list.size());
 //		Object record[] = new Object[5];
-		String[] heading = {"이름","연락처","예약일자","예약시간","시술목록"};
+		
 		
 		
 		
@@ -42,25 +42,28 @@ public class Masterhome {
 
 		JLabel jl13 = new JLabel("이름 : " + member.getName() + " Rank: " + member.getRank());
 		jl13.setSize(400, 30);
-		jl13.setLocation(-80, 30);
+		jl13.setLocation(110, 20);
 		jl13.setHorizontalAlignment(JLabel.CENTER);
 		
 		jf.add(jl13);
 		jf.add(pn);
 		
 		table.setSize(200,200);
+		
+		String[] heading = {"이름","연락처","예약일자","예약시간","시술목록"};
 		DefaultTableModel dt = new DefaultTableModel(heading,0);
-		for(Personl vo : list) {
-			Object[] row = {vo.getName(),vo.getPhone(),vo.getDates(),vo.getTimes(),vo.getContent()	
-			};
-			dt.addRow(row);
+		
+		for(HairMemberVo vo : list) {
+			Object[] row = new Object [list.size()];
+		
+			dt.addRow(new Object[] {vo.getName(),vo.getPhone(),vo.getDates(),vo.getTimes(),vo.getContent()});
 		}
 		table.setModel(dt);
 		
 		pn.add(sp);
 		
-		pn.setBounds(50, 70, 600, 700);
-		sp.setBounds(50, 70, 600, 700);
+		pn.setBounds(35, 70, 600, 700);
+		sp.setBounds(35, 70, 600, 700);
 		
 		pn.setVisible(true);
 		

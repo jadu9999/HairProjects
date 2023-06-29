@@ -19,15 +19,17 @@ public class HairDao {
 
 	// 관리자-----------------------------------------------
 
-	public ArrayList<Personl> Usercheck() {
-		ArrayList<Personl> arrypersonl = new ArrayList<Personl>();
+	public ArrayList<HairMemberVo> Usercheck() {
+		ArrayList<HairMemberVo> arrypersonl = new ArrayList<HairMemberVo>();
 
 		try {
 			connDB();
-			String query = "SELECT name,phone,content,times,dates\r\n"
-					+ "FROM hairmember";
-			Statement stmt1 = con.createStatement();
-			rs = stmt1.executeQuery(query);
+			String query = "SELECT name,phone,content,times,dates FROM hairmember where reservation = ?";
+			PreparedStatement stmt1 = con.prepareStatement(query);
+			
+			stmt1.setString(1, "Y");
+			
+			rs = stmt1.executeQuery();
 			
 		//	stmt = con.prepareStatement(query);
 			//stmt.setString(1, "Y");
@@ -42,14 +44,14 @@ public class HairDao {
 			System.out.println("레코드 값의 갯수 : " + rs.getRow());
 //			rs.beforeFirst();
 			while (rs.next()) {
-
-				String name = rs.getString("name");
-				String phone = rs.getString("phone");
-				String dates = rs.getString("dates");
-				String times = rs.getString("times");
-				String content = rs.getString("content");
-
-				Personl data = new Personl(name, phone, dates, times, content);
+				HairMemberVo data = new HairMemberVo();
+				
+				data.setName(rs.getString("name"));
+				data.setPhone(rs.getString("phone"));
+				data.setDates(rs.getString("dates"));
+				data.setTimes(rs.getString("times"));
+				data.setContent(rs.getString("content"));
+				
 				arrypersonl.add(data);
 			}
 
